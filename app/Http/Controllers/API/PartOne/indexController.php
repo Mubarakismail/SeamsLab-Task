@@ -32,4 +32,24 @@ class indexController extends Controller
             return $this->sendError($e->getMessage());
         }
     }
+    public function getIndexOfString(Request $request)
+    {
+
+        try {
+            $input = $request->validate([
+                'input_string' => 'required|string',
+            ]);
+            // considerations : all characters of string are lowercase 
+            $searchedString = $input['input_string'];
+            // reverse string 
+            $searchedString = strrev($searchedString);
+            $result = 0;
+            for ($i = 0; $i < strlen($searchedString); $i++) {
+                $result += ((ord($searchedString[$i]) - ord('A') + 1) * pow(26, $i));
+            }
+            return $this->sendResponse(['index_of_string' => $result], 'Result retrieved successfully');
+        } catch (Exception $e) {
+            return $this->sendError($e->getMessage());
+        }
+    }
 }
