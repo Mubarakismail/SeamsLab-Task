@@ -34,7 +34,6 @@ class indexController extends Controller
     }
     public function getIndexOfString(Request $request)
     {
-
         try {
             $input = $request->validate([
                 'input_string' => 'required|string',
@@ -51,5 +50,37 @@ class indexController extends Controller
         } catch (Exception $e) {
             return $this->sendError($e->getMessage());
         }
+    }
+    public function minimumStepsToZero(Request $request)
+    {
+        $input = $request->all();
+        try {
+            $arraySize = $input['N'];
+            $arr = $input['Q'];
+            $result = [];
+            for ($idx = 0; $idx < $arraySize; $idx++) {
+                // if return of getFirstDivisibleNum function is equal to -1 means this number is not a prime number
+                $firstDivisible = $this->getFirstDivisibleNum($arr[$idx]);
+                if ($firstDivisible == -1) {
+                    $result[] = intval($arr[$idx]);
+                } else {
+                    $result[] = intval($firstDivisible + 1);
+                }
+            }
+            return $this->sendResponse($result, 'Result retrieved successfully');
+        } catch (Exception $e) {
+            return $this->sendError($e->getMessage());
+        }
+    }
+
+    private function getFirstDivisibleNum($num)
+    {
+        if ($num < 3)
+            return -1;
+        for ($i = 2; $i * $i <= $num; $i++) {
+            if ($num % $i === 0)
+                return $i;
+        }
+        return -1;
     }
 }

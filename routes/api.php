@@ -22,3 +22,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/skip_number_five', [indexController::class, 'skipNumberFive']);
 Route::get('/getIndexOfString', [indexController::class, 'getIndexOfString']);
+Route::post('/minimumStepsToZero', [indexController::class, 'minimumStepsToZero']);
