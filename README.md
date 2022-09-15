@@ -1,78 +1,44 @@
-<p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
+## About Project
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+This project aim to solve tasks of employment process of company to measure my problem solving skills and other some skills also so we need to read some hints below to understand benefits of this tasks.
 
-## About Laravel
+### Part One
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+-   Skip number five problem.
+-   get index of string in series problem.
+-   minimum steps to reach to zero problem.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Part two
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+-   login api endpoint.
+-   registration endpoint.
+-   update user information endpoint.
+-   get all users endpoint.
+-   get info of a specific user endpoint.
+-   delete user by api_token of user endpoint.
 
-## Learning Laravel
+## Considerations
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+-   **I didn't make a validation in problems of part one that means i expect that the input has a correct format.**
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## approaches
 
-## Laravel Sponsors
+-   **Skip number five problem** (first problem in part one)
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+    Expected to send two variable (with names `begin` and `end`) in GET endpoint represent beginning and end of the range and this variables have integer values so code just have `IF Condition` in for loop.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
-- [Appoly](https://www.appoly.co.uk)
-- [OP.GG](https://op.gg)
+-   **Get index of string** (second problem in part one)
 
-## Contributing
+    I solved this problem depends on how to calculate difference between each character and `A` thats mean (Each character in this string must be an uppercase character) thats occurred after reversing string and multiply this difference in (26 ^ (index of current character) )
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+    -   Example:-
 
-## Code of Conduct
+        AAA => (A-A+1)\*(26^0) + (A-A+1)\*(26^1) + (A-A+1)\*(26^2) = 1 + 26 + 676 = 703
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+-   **Minimum steps to zero** (third problem in part one)
 
-## Security Vulnerabilities
+    Best solution for this problem is trying to get all divisors for each number and if number is prime we must other way that require to subtract only from number and also try to getting divisors of new number and continue in the process until reaching to zero
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+    -   best way to get divisors is using O(sqrt(number)) algorithm to improve solution as much as we can
+    -   method is POST here not GET
+    -   make sure that ( `N` is a number and `Q` is array of integers )
