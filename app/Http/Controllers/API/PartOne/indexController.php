@@ -38,9 +38,9 @@ class indexController extends Controller
             $input = $request->validate([
                 'input_string' => 'required|string',
             ]);
-            // considerations : all characters of string are lowercase 
+            // considerations : all characters of string are lowercase
             $searchedString = $input['input_string'];
-            // reverse string 
+            // reverse string
             $searchedString = strrev($searchedString);
             $result = 0;
             for ($i = 0; $i < strlen($searchedString); $i++) {
@@ -60,12 +60,18 @@ class indexController extends Controller
             $result = [];
             for ($idx = 0; $idx < $arraySize; $idx++) {
                 // if return of getFirstDivisibleNum function is equal to -1 means this number is not a prime number
-                $firstDivisible = $this->getFirstDivisibleNum($arr[$idx]);
-                if ($firstDivisible == -1) {
-                    $result[] = intval($arr[$idx]);
-                } else {
-                    $result[] = intval($firstDivisible + 1);
+                $num = $arr[$idx];
+                $steps = 0;
+                while ($num != 0) {
+                    $firstDivisible = $this->getFirstDivisibleNum($num);
+                    if ($firstDivisible == -1) {
+                        $num--;
+                    } else {
+                        $num = intval($firstDivisible);
+                    }
+                    $steps++;
                 }
+                $result[] = $steps;
             }
             return $this->sendResponse($result, 'Result retrieved successfully');
         } catch (Exception $e) {
@@ -77,10 +83,11 @@ class indexController extends Controller
     {
         if ($num < 3)
             return -1;
+        $result = -1;
         for ($i = 2; $i * $i <= $num; $i++) {
             if ($num % $i === 0)
-                return $i;
+                $result = max($i, $result, $num / $i);
         }
-        return -1;
+        return $result;
     }
 }
